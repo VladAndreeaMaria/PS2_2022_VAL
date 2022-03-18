@@ -1,0 +1,51 @@
+void setup()
+{
+   pinMode(13,OUTPUT);
+   pinMode(11,OUTPUT);
+   pinMode(10,OUTPUT);
+   pinMode(9,OUTPUT);
+   Serial.begin(9600);
+}
+
+void loop()
+{   
+  String led;
+ 
+  if (Serial.available())
+  { 
+      led =Serial.readString();
+     if(led.compareTo("1 A") == 0)
+     {	
+       
+       digitalWrite(13, HIGH);
+       delay(1000); 
+     }
+   	 if(led.compareTo("1 S") == 0)
+     { 
+ 	   digitalWrite(13, LOW);
+       delay(1000); 
+     }
+  
+     if(led.compareTo("2 FFFFFF") == 0)
+     {	
+        digitalWrite(11,HIGH);
+  		digitalWrite(10,HIGH);
+   		digitalWrite(9,HIGH);
+   		delay(1000);
+     }
+    if(led.compareTo("2 FFFF00") == 0)
+     {	
+        digitalWrite(11,HIGH);
+  		digitalWrite(10,HIGH);
+   		digitalWrite(9,LOW);
+   		delay(1000);
+     }
+    if(led.compareTo("2 FF0000") == 0)
+     {	
+        digitalWrite(11,HIGH);
+  		digitalWrite(10,LOW);
+   		digitalWrite(9,LOW);
+   		delay(1000);
+     }
+  }
+}
